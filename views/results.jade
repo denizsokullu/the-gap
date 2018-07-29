@@ -1,0 +1,31 @@
+doctype html  
+html  
+  head
+    title The Gap
+    link(href='css/style.css', rel='stylesheet')
+  body#results
+      nav
+        ul
+          li
+            a.cool-link(href='/system/intro') The System
+          li
+            a.cool-link(href='/choice/intro') The Choice
+          li
+            a.cool-link(href='/bias/intro') The Bias
+      div.container
+        h4 So let's talk about the Gap.
+        p.submit-subInfo Read about other's experiences with the system,the choice, the bias, or education in general and share your own story.
+        ul.forms
+          each submission, i in forms
+              li.user-list-item
+                h2 #{submission.title} 
+                p #{submission.content}
+        div.link-container
+          a.results-link(href="/submit") Share your story
+      a.logo-link(href='/')
+      #logo
+        span
+          | The
+          br
+          | Gap
+        #line

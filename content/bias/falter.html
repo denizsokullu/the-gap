@@ -1,0 +1,107 @@
+<html>
+    
+    <head>
+        <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+        <meta charset = "UTF-8">
+        <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js">
+        </script>
+    </head>
+    <body>
+        <nav>
+                    <ul>
+                      <li><a class="cool-link" href="/system/intro">The System</a></li>
+                      <li><a class="cool-link" href="/choice/intro">The Choice</a></li>
+                      <li><a class="cool-link-active" href="/bias/intro">The Bias</a></li>
+                    </ul>
+        </nav>
+        <div class="falter-container">
+            <div class="falter-title-container">
+                <h1>Falter from Graduation&#8212;</h1>
+                <p>Rate per 100,000 of Placement of Juveniles in Residential Facilities</p>
+                <p>The white bars represent men, the black bars represent women</p> 
+            </div>
+            <div class="col-md-6 col-md-offset-0 falter-shape-container">
+                <div id="bar-container">
+                    <div id="bar-chart">
+                        <div id="bar-legend"></div>
+                        <canvas id="bar-canvas" width="300" height="200" ></canvas>
+                    </div>
+                </div>
+                <script>
+                    var data = {
+                        labels: ["White", "Black", "Hispanic", "Asian", "Native American"],
+                        // yLabels: [0,100,200,300,400,500,600,700,800].map (function(x){return x.toString();}),	
+                        datasets: [
+                            {
+                                label: "My First dataset",
+                                fillColor: "rgba(255,255,255,.4)",
+                                strokeColor: "rgba(220,220,220,0)",
+                                highlightFill: "rgba(255,255,255,.70)",
+                                highlightStroke: "rgba(220,220,220,0)",
+                                data: [153, 733, 312, 50, 486]
+                            },
+                        {
+                            label: "My Second dataset",
+                            fillColor: "rgba(0,0,0,.4 )",
+                            strokeColor: "rgba(151,187,205,0)",
+                            highlightFill: "rgba(0,0,0,.70)",
+                            highlightStroke: "rgba(151,187,205,0)",
+                            data: [32, 101, 42, 9, 166]
+                        }
+                    ]
+                    };
+                   var options = {
+                        scaleFontColor: "white",
+                    };
+                    
+                    var ctx = document.getElementById("bar-canvas").getContext("2d");
+                    var myBarChart = new Chart(ctx).Bar(data, options);
+                    myBarChart.options.scaleFontFamily = "'Gotham'";
+                    myBarChart.scale.font = "9px 'Gotham'";
+                    myBarChart.options.tooltipFontFamily = "'Gotham'";
+                    myBarChart.options.tooltipTitleFontFamily = "'Gotham'";
+                    myBarChart.options.tooltipTitleFontStyle = "normal";
+                </script>
+            </div>
+            
+        </div>
+        <div class="side-container">
+            <p>
+                For every 100,000 students, 733 black males are placed in Juvenile Residential Facilities 
+                in comparison to just 153 white males or 50 Asian males. All over the United States, 
+                there are  1,400 high schools that have graduation rates of 40% or lower. Most of these 
+                schools are made up of predominantly minority students. Though dropout rates have evened 
+                out amongst different races, the current outlier is Asian American Students, who have a 
+                dropout rate of 1.8% in comparison to 4.7% average.     
+            </p>
+        </div>
+        
+            
+             <!--LOGO-->
+             <a href="/" class = "logo-link"></a>
+            <div id="logo"><span>The<br>Gap</span>
+            <div id="line"></div></div>
+    
+            <!--ARROW-->
+            <div class="shape small">
+                <div id="farrow">
+                    <a href="/results"><img src="../../images/system/bfarrow.png" alt=""></a>
+                </div>
+            </div>
+            <div class="shape small reverse">
+                <div id="barrow">
+                    <a href="/bias/preschool"><img src="../../images/system/bfarrow.png" alt=""></a>
+                </div>
+            </div>
+                
+        </div>
+        
+        
+        
+        
+    </body>
+</html>

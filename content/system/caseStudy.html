@@ -1,0 +1,194 @@
+<html>
+    <head>
+        <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+        <meta charset = "UTF-8">
+        <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+        <script>
+            started = false;
+            
+            $(document).mousemove(function(event) {
+                
+                var mouseY = event.pageY;
+                var mouseX = event.pageX;
+                height = window.innerHeight;
+                width = window.innerWidth;
+                d = Math.round(Math.sqrt(Math.pow(mouseX-(width/2),2)+Math.pow(mouseY-(height/2),2)));
+                d1 = width*0.10;
+                d2 = width*0.13;
+                d3 = width*0.21;
+                n1 = 9794;
+                n2 = 11841;
+                n3 = 28649;
+                s = "#number";
+                
+                function mapTo(d,d1,d2,n1,n2){
+                        return (Math.round((d-d1)*((n2-n1)/(d2-d1))+n1));
+                }
+            
+                function dollarify(n){
+                        s = n.toString();
+                        l = s.length - 3;
+                        return ("$"+s.slice(0,l)+","+s.slice(l));
+                }
+                
+                function setColor(num){
+                        $(".circle1").css("border-color","white");
+                        $(".circle2").css("border-color","white");
+                        $(".circle3").css("border-color","white");
+                        if (num != 0){
+                            $(".circle"+num.toString()).css("border-color","#1A2248"); 
+                        }
+                }
+                function resetDivs(){
+                    $(".right-side").css("opacity","0");
+                    $(".left-side").css("opacity","0");
+                    $(".third-side").css("opacity","0");
+                }
+                
+                function doEverythingElse(){
+                    if (d <= d1){
+                        $(s).text(dollarify(n1));
+                        $(".circle-top-info").html("Chicago Ridge <br> School District");
+                        setColor(1);
+                        $(".right-side").css("opacity","1");
+                        $(".left-side").css("opacity","0");
+                        $(".third-side").css("opacity","0");
+                        
+                    }
+                    else if (d >= d2 && d <= d2+10){
+                        $(s).text(dollarify(n2));
+                        $(".circle-top-info").html("<br> National Average ");
+                        setColor(2);
+                        $(".right-side").css("opacity","0");
+                        $(".left-side").css("opacity","1");
+                        $(".third-side").css("opacity","0");
+                    }
+                    else if (d >= d3-5 && d <= d3+5){
+                        $(s).text(dollarify(n3));
+                        $(".circle-top-info").html("Rondout District 72 <br> School District");
+                        setColor(3);
+                        resetDivs();
+                        $(".right-side").css("opacity","0");
+                        $(".left-side").css("opacity","0");
+                        $(".third-side").css("opacity","1");
+                    }
+                    else if (d >= d3-5){
+                        $(s).text(dollarify(n3));
+                        $(".circle-content").html("<p class=\"original\">See the extreme difference in education funding caused by districting as exemplified in Chicago, one of the most segregated cities in the US.</p><br><p class=\"original last\">Move your cursor around inside this circle.</p>")
+                        $(".circle-content").addClass("original-content");
+                        // $(".circle-top-info").html("Rondout District 72 <br> School District");
+                        $(".circle3").css("background-color","white");
+                        $(".circle-content").css("text-align","left");
+                        started = false;
+                        setColor(0);
+                        resetDivs();
+                    }
+                    else if (d < d2 && d > d1){
+                        n = (mapTo(d,d1,d2,n1,n2));
+                        $(s).text(dollarify(n));
+                        $(".circle-top-info").html("<br><br>");
+                        setColor(0);
+                        resetDivs();
+                    }
+                    else if (d < d3 && d > d2){
+                        n = (mapTo(d,d2,d3,n2,n3));
+                        $(s).text(dollarify(n));
+                        $(".circle-top-info").html("<br><br>");
+                        setColor(0);
+                        resetDivs();
+                    }
+                    return true;
+                }            
+                
+                if (d <= d3+20 && !started){
+                    started = true;
+                    $(".circle-content").html("<p class = \"circle-top-info\">Rondout District 72 <br> School District</p><h3 id =\"number\">$28,694</h3><p class = \"circle-bottom-info\">PER STUDENT ANNUALLY</p>");
+                    $(".circle3").css("background-color","transparent");
+                    $(".circle-content").css("text-align","center");
+                    $(".circle-content").removeClass("original-content");
+                    doEverythingElse();
+                }
+                else if (started){
+                    doEverythingElse();
+                }
+                
+                
+                
+
+            });
+        </script>
+    </head>
+    <body>
+        <nav>
+                    <ul>
+                      <li><a class="cool-link-active" href="/system/intro">The System</a></li>
+                      <li><a class="cool-link" href="/choice/intro">The Choice</a></li>
+                      <li><a class="cool-link" href="/bias/intro">The Bias</a></li>
+                    </ul>
+            </nav>
+            
+        <div class="backgrounds">
+            <img class = "circle-color-image"src="../../images/system/bw-diverse-kids-reading.jpg"></img>
+            <img class="circle-normal-image" src="../../images/system/system-caseStudy.jpg"></img>
+        <div class="circle-container">
+            <div class="circle3 circle"></div>
+            <div class="circle2 circle"></div>
+            <div class="circle1 circle">
+                <div class ="circle-content original-content">
+                    <p class="original">
+                     See the extreme difference in education funding caused by districting as exemplified in Chicago, one of the most segregated cities in the US.
+                    </p>
+                    <br>
+                    <p class="original last">
+                     Move your cursor around inside this circle.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+            
+         <!--LOGO-->
+         <a href="/" class = "logo-link"></a>
+        <div id="logo"><span>The<br>Gap</span>
+        <div id="line"></div></div>
+
+        <!--ARROW-->
+        <div class="shape small">
+            <div id="farrow">
+                <a href="/choice/intro"><img src="../../images/system/bfarrow.png" alt=""></a>
+            </div>
+        </div>
+        <div class="shape small reverse">
+            <div id="barrow">
+                <a href="/system/districting"><img src="../../images/system/bfarrow.png" alt=""></a>
+            </div>
+        </div>
+        
+        <!--QUOTE-->
+        <div class="case-container">
+                <div class="left-side">
+                    <p>“Show me a flourishing ZIP code, and I'm going to show you a flourishing school district. Show me a ZIP code that's struggling, 
+                    and we'll show you a struggling school district. And we just don't want to talk about that.”
+                    </p>
+                    <h4>&#8212;Eric Knost, Superintendent of Mehlville School District</h4>
+                </div>
+                <div class="right-side">
+                    <p>Ridge's two elementary campuses and one middle school sit along Chicago's southern edge. 
+                    Roughly two-thirds of its students come from low-income families, and a third are learning English as a second language.
+                    <br><br>To be fair, Illinois gives more money to Ridge than it does to Rondout. It's just not nearly enough to level the playing field.
+                    </p>
+                </div>
+                <div class="third-side">
+                    <p>Rondount School is located in an affluent suburb less than an hour north of Chicago. It is the only campus in Rondout District 72 with 22 teachers and 145 students, each of whom has an individualized learning plan.
+                    <br><br>Rondout's neighbors are successful businesses. They pay local taxes, and those taxes help pay for local schools.
+                    </p>
+                </div>
+        </div>
+        
+        
+    </body>
+</html>
+

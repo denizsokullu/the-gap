@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+        <meta charset = "UTF-8">
+        <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+        <script type="text/javascript">
+        // Clip-path mouse height following code
+        // Deniz Sokullu
+            $(window).on("load",function() {
+                  $("body").css("visibility","visible");
+            });
+            var changedColor = false;
+            var changedNoColor = true;
+            $(document).mousemove(function(event) {
+                var mouseY = event.pageY;
+                var height = window.innerHeight;
+                var ratio = 100 - Math.floor(mouseY/height*100);
+                var property = "clip-path";
+                
+                if (ratio > 25 & !changedNoColor){
+                    //Changing the top image
+                    $(".color-none-image-top").css("opacity","0.4");
+                    $(".colored-image-top").css("opacity","1");
+                    //Changing the bottom image
+                    $(".color-none-image-bottom").css("opacity","1");
+                    $(".colored-image-bottom").css("opacity","0");
+                    changedNoColor = true;
+                    changedColor = false;
+                    console.log(changedNoColor)
+                }
+                else if(!changedColor){                    
+                    //Changing the top image
+                    $(".color-none-image-top").css("opacity","1");
+                    $(".colored-image-top").css("opacity","0");
+                    //Changing the bottom image
+                    $(".color-none-image-bottom").css("opacity","0.4");
+                    $(".colored-image-bottom").css("opacity","1");
+
+                }
+                if (ratio > 50){
+                    changedNoColor = false;
+                    changedColor = true;
+                }
+                if (15 < ratio && ratio < 85){
+                    var valueBottom = "polygon(0 "+(ratio+10+4).toString()+"vh, 100% "+(ratio-10+4).toString()+"vh, 100% 0, 0 0)";
+                    var valueTop = "polygon(0 "+(ratio+10).toString()+"vh, 100% "+(ratio-10).toString()+"vh, 100% 0, 0 0)";
+                }
+                $("#topImage").css(property,valueBottom);
+                $(".topImage-image").css(property,valueTop)
+            });
+        </script>
+        <style type="text/css">
+            body{
+                visibility:hidden;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <nav>
+                    <ul>
+                      <li><a class="cool-link" href="/system/intro">The System</a></li>
+                      <li><a class="cool-link" href="/choice/intro">The Choice</a></li>
+                      <li><a class="cool-link-active" href="/bias/intro">The Bias</a></li>
+                    </ul>
+        </nav>
+
+           
+        <div class="image" id ="topImage">
+            <div class = "topImage-holder">
+                <img class = "topImage-image color-none-image-top" src="../../images/bias/cafecolor.png" alt="">
+                <img class = "topImage-image colored-image-top" src="../../images/bias/cafebw.png" alt="" class="hidden">
+            </div>
+            <div class="row title-container">
+                <div class="col-md-7 col-md-offset-3 content">
+                        <h1>The Bias&#8212;</h1>
+                        <h2>Racial biases and Stereotyping</h2>
+                </div>
+            </div>
+        </div>  
+            
+        <div class="image" id = "bottomImage">
+            <img class = "color-none-image-bottom" src="../../images/bias/handcolor.png" alt="">
+            <img class = "colored-image-bottom" src="../../images/bias/handbw.png" alt="">
+            <div class="row content-container">
+                <div class="col-md-5 col-md-offset-5 content">
+                        <p>Though it has been over 60 years since the Supreme Court declared that segregated schools are unconstitutional, 
+                        the biases and stereotypes surrounding race have been perpetuated and expanded upon.  Due to economics, 
+                        the comfort of being part of a community, and other factors, many schools have resegregated. </p>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+    
+    <!--LOGO-->
+    <a href="/" class = "logo-link"></a>
+    <div id="logo"><span>The<br>Gap</span>
+    <div id="line"></div></div>
+    
+    <!--ARROW-->
+    <div class="shape small">
+        <div id="farrow">
+            <a href="/bias/preschool"><img src="../../images/system/bfarrow.png" alt=""></a>
+        </div>
+    </div>
+    <div class="shape small reverse">
+            <div id="barrow">
+                <a href="/choice/privatepublic"><img src="../../images/system/bfarrow.png" alt=""></a>
+            </div>
+    </div>
+
+    
+</html>

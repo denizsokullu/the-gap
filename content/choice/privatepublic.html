@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+        <meta charset = "UTF-8">
+        <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+        <script>
+        $(function(){
+            $(".pp-left").hover(function(){
+                $(".left-side").css("clip-path","polygon(0 0, 60% 0, 56% 100%, 0% 100%)");
+                $(".right-side").css("clip-path","polygon(60% 0, 100% 0, 100% 100%, 56% 100%)");
+                $(".left-side-number").css("width","58%");
+                $(".right-side-number").css("width","41%");
+                $(".left-side-number").html("58%<br><span>WHITE STUDENTS</span>");
+                $(".right-side-number").html("42%<br><span>NONWHITE STUDENTS</span>");
+                $(".thin-bar-left").css("opacity","1");
+                $(".thin-bar-right").css("opacity","0.4");
+                $(".thin-bar-left-p").css("opacity","1");
+                $(".thin-bar-right-p").css("opacity","0");
+                
+            },
+            function(){
+            });
+            $(".pp-center").hover(function(){
+                $(".left-side").css("clip-path","polygon(0 0, 67% 0, 63% 100%, 0% 100%)");
+                $(".right-side").css("clip-path","polygon(67% 0, 100% 0, 100% 100%, 63% 100%)");
+                $(".left-side-number").css("width","65%");
+                $(".right-side-number").css("width","34%");
+                $(".left-side-number").html("65%<br><span>WHITE STUDENTS</span>");
+                $(".right-side-number").html("35%<br><span>NONWHITE STUDENTS</span>");
+                $(".thin-bar-right").css("opacity","1");
+                $(".thin-bar-left").css("opacity","1");
+                $(".thin-bar-left-p").css("opacity","0");
+                $(".thin-bar-right-p").css("opacity","0");
+            },
+            function(){
+            });
+            $(".pp-right").hover(function(){
+                $(".left-side").css("clip-path","polygon(0 0, 76% 0, 72% 100%, 0% 100%)");
+                $(".right-side").css("clip-path","polygon(76% 0, 100% 0, 100% 100%, 72% 100%)");
+                $(".left-side-number").css("width","74%");
+                $(".right-side-number").css("width","25%");
+                $(".left-side-number").html("74%<br><span>WHITE STUDENTS</span>");
+                $(".right-side-number").html("26%<br><span>NONWHITE STUDENTS</span>");
+                $(".thin-bar-left").css("opacity","0.4");
+                $(".thin-bar-right").css("opacity","1");
+                $(".thin-bar-left-p").css("opacity","0");
+                $(".thin-bar-right-p").css("opacity","1");
+            },
+            function(){
+            });
+        })
+
+        </script>
+    </head>
+    <body class="pp">
+        <nav>
+                    <ul>
+                      <li><a class="cool-link" href="/system/intro">The System</a></li>
+                      <li><a class="cool-link-active" href="/choice/intro">The Choice</a></li>
+                      <li><a class="cool-link" href="/bias/intro">The Bias</a></li>
+                    </ul>
+        </nav>
+        <div class="container">
+            <div class="row">
+        		<div class="col-md-10 col-md-offset-1 pp-container">
+        		    <div class="pp-content">
+            			<h4>See just how unproportional the distribution in the demographic of students
+            			attending private and public schools is in the nation.</h4>
+            			<p>Navigate the three sections below.</p>  
+            			<div class="row">
+            			    <div class="col-md-4 pp-left">Public<br>School</div>
+            			    <div class="col-md-4 pp-center">National<br>Average</div>
+            			    <div class="col-md-4 pp-right">Private<br>School</div>
+            			</div>
+        		    </div>
+        		    <div class="thin-bar">
+        		        <div class="thin-bar-left"><p class ="thin-bar-left-p">90% OF ALL<br>STUDENTS</p></div><div class="thin-bar-right"><p class ="thin-bar-right-p">10% OF ALL<br>STUDENTS</p></div>
+        		    </div>
+                    <div class="bar right-side"></div>
+                    <div class="bar left-side"></div>
+                    <div class="number-container">
+                        <div class="left-side-number number">65%<br><span>WHITE STUDENTS</span></div>
+                        <div class="right-side-number number">35%<br><span>NONWHITE STUDENTS</span></div>    
+                    </div>
+
+        		</div>	
+        	</div>
+		</div>
+            
+         <!--LOGO-->
+         <a href="/" class = "logo-link"></a>
+            <div id="logo"><span>The<br>Gap</span>
+            <div id="line"></div></div>      
+
+
+
+        <!--ARROW-->
+        <div class="shape small">
+            <div id="farrow">
+                <a href="/bias/intro"><img src="../../images/system/bfarrow.png" alt=""></a>
+            </div>
+        </div>
+        <div class="shape small reverse">
+            <div id="barrow">
+                <a href="/choice/dreams"><img src="../../images/system/bfarrow.png" alt=""></a>
+            </div>
+        </div>
+            
+    </body>
+</html>
